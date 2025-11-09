@@ -69,7 +69,7 @@ int main(int argc, char** argv) {
         panic("Unable to find a file at path: '%s'", file_path_cstr);
     }
 
-    File f = file_open(file_path_cstr, "r");
+    File f = file_open(file_path_cstr, "rb");
     Slice buffer = {0};
     size_t size = 0;
 
@@ -98,7 +98,7 @@ int main(int argc, char** argv) {
         printf(" %02llX", i);
     }
 
-    printf("\n000000\t");
+    printf("\n\n000000\t");
 
     char ascii_buffer[17] = {0};
     int ascii_buffer_idx = 0;
@@ -108,7 +108,7 @@ int main(int argc, char** argv) {
         uint8_t byte = *((uint8_t*)buffer.ptr + i);
 
         char mapped_ascii =
-            (!isascii(byte) | (byte == '\n') | (byte == '\0')) 
+            (!isascii(byte) | (byte == '\r') | (byte == '\n') | (byte == '\0')) 
             ? '.' 
             : (char)byte;
 
@@ -118,14 +118,21 @@ int main(int argc, char** argv) {
 
         if ((i + 1) % 16 == 0) {
             ascii_buffer_idx = 0;
-            // printf(" %s", ascii_buffer);
+            printf(" %s", ascii_buffer);
             printf("\n%06X", new_lines_count++);
             printf("\t");
         }
     }
 
-    if (ascii_buffer_idx == 0) {
-        // printf(" %s\n", ascii_buffer);
+    if (ascii_buffer_idx != 0) {
+        ascii_buffer[ascii_buffer_idx] = 0; 
+        int remaining_spaces = sizeof(ascii_buffer) - ascii_buffer_idx - 1; 
+        remaining_spaces *= 3;
+        for (int i = 0; i < remaining_spaces; ++i) {
+            printf(" ");
+        }
+
+        printf(" %s\n", ascii_buffer);
     }
 
     file_close(&f);

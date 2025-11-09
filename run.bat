@@ -1,4 +1,4 @@
-@REM @echo off
+@echo off
 
 set TARGET_NAME=hexfile.exe
 set ROOT_FOLDER=D:\Users\aauhabin1\dev\c\hexfile\

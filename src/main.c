@@ -89,7 +89,7 @@ int main(int argc, char** argv) {
     err = file_read_exact(&f, &buffer);
 
     if (err != 0) {
-        panic("Error at evaluating file size: '%s'", strerror(err));
+        panic("Error at reading file: '%s'", strerror(err));
     }
 
     printf("\t");

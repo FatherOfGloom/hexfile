@@ -101,6 +101,8 @@ int main(int argc, char** argv) {
     printf("\n\n000000\t");
 
     char ascii_buffer[17] = {0};
+    char spaces[17*3] = {0};
+    memset(spaces, ' ', sizeof(spaces));
     int ascii_buffer_idx = 0;
     int new_lines_count = 1;
 
@@ -118,21 +120,14 @@ int main(int argc, char** argv) {
 
         if ((i + 1) % 16 == 0) {
             ascii_buffer_idx = 0;
-            printf(" %s", ascii_buffer);
-            printf("\n%06X", new_lines_count++);
-            printf("\t");
+            printf(" %s\n%06X\t", ascii_buffer, new_lines_count++);
         }
     }
 
     if (ascii_buffer_idx != 0) {
         ascii_buffer[ascii_buffer_idx] = 0; 
         int remaining_spaces = sizeof(ascii_buffer) - ascii_buffer_idx - 1; 
-        remaining_spaces *= 3;
-        for (int i = 0; i < remaining_spaces; ++i) {
-            printf(" ");
-        }
-
-        printf(" %s\n", ascii_buffer);
+        printf("%*.s %s\n", remaining_spaces * 3, spaces, ascii_buffer);
     }
 
     file_close(&f);

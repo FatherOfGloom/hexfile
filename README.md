@@ -4,11 +4,11 @@ Console utility for displaying file contents as bytes in hexadecimal format with
 
 ## Usage
 
-    hexfile [file-path]
+hexfile [file-path]
 
 #### Example:
 ```bash
-    hexfile ./src/main.c
+hexfile ./src/main.c
 ```
 
 ## Quick start
@@ -18,7 +18,7 @@ Console utility for displaying file contents as bytes in hexadecimal format with
 Build from source.
 
 ```bash
-    ./build.bat
+./build.bat
 ```
 
 Add the executable from the created bin folder to PATH

@@ -1,7 +1,7 @@
 @echo off
 
 set TARGET_NAME=hexfile.exe
-set ROOT_FOLDER=D:\Users\aauhabin1\dev\c\hexfile\
+set ROOT_FOLDER=%~dp0
 set CLI_ARGS=%*
 
 pushd %ROOT_FOLDER%

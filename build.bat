@@ -2,17 +2,14 @@
 
 set TARGET_NAME=hexfile.exe
 set SRC_FILENAMES=main.c
-set ROOT_FOLDER=D:\Users\aauhabin1\dev\c\hexfile\
-@REM set CFLAGS=-Wall -Wextra -pedantic -ggdb -std=c11 -lraylib -lgdi32 -lwinmm -O1
+set ROOT_FOLDER=%~dp0
 set CFLAGS=-Wall -Wextra -pedantic -ggdb -fanalyzer -std=c11 -O3 -lws2_32
 
 setlocal enabledelayedexpansion
 
 set SRC_PATHS=
 
-@REM for %%i in (%SRC_FILENAMES%) do (set SRC_PATHS=!SRC_PATHS! ..\src\%%i)
 for %%i in (%SRC_FILENAMES%) do (set SRC_PATHS=!SRC_PATHS! %ROOT_FOLDER%src\%%i)
-
 
 pushd %ROOT_FOLDER%
 

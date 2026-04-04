@@ -2,6 +2,8 @@
 
 Console utility for displaying file contents as bytes in hexadecimal format with a ASCII mapped preview on the right.
 
+![App Screenshot](https://snipboard.io/RwMAt7.jpg)
+
 ## Usage
 
 hexfile [file-path]
